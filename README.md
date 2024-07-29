@@ -38,6 +38,8 @@ I am no designer by any stretch of the imagination, so the initial web app was n
 - Visual Studio Code
 
 ## Links
+- [NewSource Code in Next Js](https://github.com/McDonaldMusimwa/stockifynextjs.git)
 
 - [Old Live Web App](https://stockify.heromarket.co.za/)
-- [Source Code](https://github.com/McDonaldMusimwa/InventorySystemTypescript)
+- [Old BackEnd Source Code](https://github.com/McDonaldMusimwa/InventorySystemTypescript)
+- [Old FrontEnd SourceCode](https://github.com/McDonaldMusimwa/stockify.git)
