@@ -5,7 +5,7 @@ import TopProducts from "../ui/dashboard/topproducts";
 export default function Page() {
   return <>
     <CardWrapper />
-    <div className="grid gap-2 grid-cols-6">
+    <div className="grid gap-2 grid-cols-5">
 
       <RevenueChart />
       <TopProducts />

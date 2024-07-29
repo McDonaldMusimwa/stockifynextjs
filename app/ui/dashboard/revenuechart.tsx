@@ -13,16 +13,16 @@ export default function RevenueChart() {
         title: "Company Performance",
         hAxis: { title: "Year", titleTextStyle: { color: "#333" } },
         vAxis: { minValue: 0 },
-        chartArea: { width: "50%", height: "70%" },
+        chartArea: { width: "70%", height: "70%" },
     };
 
 
     return (
-        <div className='mt-2 col-span-5'>
+        <div className='mt-2 col-span-3'>
             <Chart
                 chartType="AreaChart"
 
-                width="80%"
+                width="100%"
                 height="300px"
                 legendToggle
                 data={data}
