@@ -1,13 +1,15 @@
-const mongoose = require('mongoose');
+import mongoose, { Document, Model, Mongoose, Schema } from 'mongoose';
 
-const { Schema, model } = mongoose;
-
+export interface ISupplier extends Document {
+    supplier: string,
+    contactname: string,
+    email: string,
+    phone: string,
+    adress: string
+}
 // Define the user schema
-const supplierSchema = new Schema({
-    supplier: {
-        type: String,
-        required: true,
-    },
+const supplierSchema =new Schema<ISupplier>({
+    supplier: { type: String, required: true, },
 
     contactname: {
         type: String,
@@ -29,7 +31,7 @@ const supplierSchema = new Schema({
 
 
 // Create models based on the schemas
-const Supplier = model('Supplier', supplierSchema, 'suppliers');
+const Supplier = mongoose.model<ISupplier> ('Supplier', supplierSchema, 'suppliers');
 //const OAuthUser = model('OAuthUser', oauthUserSchema, 'users');
 
 export default Supplier;

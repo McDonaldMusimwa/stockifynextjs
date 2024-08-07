@@ -1,9 +1,21 @@
-const mongoose = require('mongoose');
+import mongoose, { Document, Schema } from 'mongoose';
 
-const { Schema, model } = mongoose;
 
+
+enum Level {
+  admin = 'admin',
+  worker = 'worker',
+}
+//User Interface
+export interface IUser extends Document {
+  email: string,
+  password: string,
+  firstname: string,
+  lastname: string,
+  level: Level,
+}
 // Define the user schema
-const userSchema = new Schema({
+const userSchema = new Schema<IUser>({
   email: {
     type: String,
     required: true,
@@ -20,34 +32,16 @@ const userSchema = new Schema({
     type: String,
     required: false, // It's better to use `required` instead of `require`
   },
-});
-
-// Define the OAuth user schema
-const oauthUserSchema = new Schema({
-  firstname: {
+  level: {
     type: String,
-    required: true,
-  },
-  lastname: {
-    type: String,
-    required: true,
-  },
-  googleId: {
-    type: String,
-    required: true,
-  },
-  picture: {
-    type: String,
+    enum: Object.values(Level),  // Ensure level is one of the enum values
     required: false,
   },
-  email: {
-    type: String,
-    required: true,
-  },
 });
 
+
 // Create models based on the schemas
-const   User = model('User', userSchema, 'users');
+const user = mongoose.model<IUser>('User', userSchema, 'users');
 //const OAuthUser = model('OAuthUser', oauthUserSchema, 'users');
 
-export default User;
+export default user;

@@ -1,45 +1,44 @@
-import mongoose, { Document, Model, Schema } from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
 
 
-export interface Shipment {
-  productid:string;
+export interface IShipment extends Document {
+  productid: string;
   productname: string;
   productdescription: string;
   quantityreceived: number;
   cost: number;
   totalcost: number;
-  expirydate:Date;
+  expirydate: Date;
   datereceived: Date;
 }
 
-export interface InventoryItem  {
+export interface IInventoryItem extends Document {
   productId: string;
   productname: string;
   totalquantity: number;
   totalcost: number;
-  shipments: Shipment[];
+  shipments: IShipment[];
 }
 
-const shipmentSchema = new mongoose.Schema<Shipment>({
-  productname: String,
-  productdescription: String,
-  quantityreceived: Number,
-  cost: Number,
-  totalcost: Number,
-  datereceived: Date,
-  expirydate:Date
+const shipmentSchema = new Schema<IShipment>({
+  productname: { type: String, required: true },
+  productdescription: { type: String, required: true },
+  quantityreceived: { type: Number, required: true },
+  cost: { type: Number, required: true },
+  datereceived: { type: Date, required: true },
+  expirydate: { type: Date, required: true }
 
 });
 
-const stockSchema = new mongoose.Schema<InventoryItem>({
-  productId: String,
-  productname: String,
-  totalquantity: Number,
-  totalcost: Number,
-  shipments: [shipmentSchema],
+const stockSchema = new Schema<IInventoryItem>({
+  productId: { type: String, required: true },
+  productname: { type: String, required: true },
+  totalquantity: { type: Number, required: true },
+  totalcost: { type: Number, required: true },
+  shipments: { type: [shipmentSchema] },
 });
 
-const StockItem: Model<InventoryItem> = mongoose.model('Stock', stockSchema, 'stock');
+const stock = mongoose.models.Stock || mongoose.model<IInventoryItem>('stock', stockSchema);
 
-export default StockItem;
+export default stock;

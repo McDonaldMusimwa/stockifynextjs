@@ -1,12 +1,12 @@
 export default function InventoryItem(inventory: {
-    ProductId: number;
-    ProductName: string;
-    ProductQuantity: number;
-    ProductsCost: number;
+    productId: number;
+    productname: string;
+    totalquantity: number;
+    totalcost: number;
     ProductThreshold: string;
 }) {
     let availability
-    if (inventory.ProductQuantity > 0) {
+    if (inventory.totalquantity > 0) {
         availability = "✔️"
     } else {
         availability = "✖"
@@ -14,13 +14,13 @@ export default function InventoryItem(inventory: {
 
 
     return (
-        <tr key={inventory.ProductId} className="rounded justify-around p-2 m-2 h-4 text-center border-solid">
-            <td>{inventory.ProductId}</td>
-            <td>{inventory.ProductName}</td>
-            <td>{inventory.ProductQuantity}</td>
-            <td>{inventory.ProductsCost}</td>
-            <td>{inventory.ProductThreshold}</td>
-            <td>{availability}</td>
+        <tr key={inventory.productId} className="text-left w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
+            <td className="whitespace-nowrap py-3 pl-6 pr-3">{inventory.productId}</td>
+            <td className="whitespace-nowrap py-3 pl-6 pr-3">{inventory.productname}</td>
+            <td className="whitespace-nowrap py-3 pl-6 pr-3">{inventory.totalquantity}</td>
+            <td className="whitespace-nowrap py-3 pl-6 pr-3">{inventory.totalcost}</td>
+            <td className="whitespace-nowrap py-3 pl-6 pr-3">10</td>
+            <td className="whitespace-nowrap py-3 pl-6 pr-3">{availability}</td>
 
         </tr>
     )
