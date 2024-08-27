@@ -7,6 +7,7 @@ export async function GET() {
     await dbConnect();
 
     try {
+        
         const result = await stock.find();
         
         const resultData = result.map((product: any) => {

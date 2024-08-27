@@ -1,11 +1,11 @@
 import Inventory from "@/app/ui/inventory/inventory";
 import InventoryDataCard from "@/app/ui/inventory/inventorydatacard";
-import AddProduct from "@/app/ui/inventory/AddProduct";
+//import AddProduct from "@/app/ui/inventory/AddProduct";
 import Search from "@/app/ui/search/Search";
 export default async function Page() {
   const response = await fetch("http://localhost:3000/api/stock")
   let stock = await response.json();
-
+  //console.log(stock)
   const sortHandler =()=>{
     /*
     if('asc'){
@@ -33,7 +33,7 @@ export default async function Page() {
 
     </div>
 
-    <table className="hidden min-w-full text-gray-900 md:table bg-white rounded-lg">
+    <table className="hidden min-w-full text-gray-900 md:table bg-white">
       <thead rounded-lg text-left text-sm font-normal>
         <tr>
           <th scope="col" className="px-3 py-5 font-medium">Product ID</th>

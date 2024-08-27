@@ -1,12 +1,12 @@
-import mongoose, { Document, Model, Schema } from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
-export interface IProductItem {
+export interface IProductItem extends Document {
     productId: string;
     productname: string;
     quantity: number;
 }
 
-export interface IOrder {
+export interface IOrder extends Document {
     customername: string;
     dateordered: Date;
     customerphone:string
@@ -15,13 +15,13 @@ export interface IOrder {
 }
 
 
-const productSchema = new Schema<IProductItem>({
+const productSchema :Schema = new Schema<IProductItem>({
     productId:{type: String,required:true},
     productname:{type:String,required:true},
     quantity: {type:Number,required:true}
 });
 
-const orderSchema = new Schema<IOrder>({
+const orderSchema :Schema = new Schema<IOrder>({
     customername:{type:String,required:true},
     dateordered: {type:Date,required:true},
     customerphone:{type:String,required:true},
@@ -31,6 +31,6 @@ const orderSchema = new Schema<IOrder>({
 
 
 
-const order = mongoose.model<IOrder>('order', orderSchema);
+const order = mongoose.models.Order || mongoose.model<IOrder>('order', orderSchema);
 
 export default order;

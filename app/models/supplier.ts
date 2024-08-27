@@ -31,7 +31,6 @@ const supplierSchema =new Schema<ISupplier>({
 
 
 // Create models based on the schemas
-const Supplier = mongoose.model<ISupplier> ('Supplier', supplierSchema, 'suppliers');
-//const OAuthUser = model('OAuthUser', oauthUserSchema, 'users');
+const Supplier = mongoose.models.Supplier || mongoose.model<ISupplier>('Supplier', supplierSchema, 'suppliers');
 
 export default Supplier;
