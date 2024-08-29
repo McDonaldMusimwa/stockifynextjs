@@ -7,7 +7,7 @@ export interface Product {
   shipments:[]
 }
 
-export default async function Inventory({stock }) {
+const Inventory : React.FC<Product>=({stock })=> {
 
 
   return (<tbody className="bg-white">
@@ -19,3 +19,5 @@ export default async function Inventory({stock }) {
     })}
   </tbody>)
 }
+
+export default Inventory
